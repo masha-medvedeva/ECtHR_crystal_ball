@@ -163,10 +163,10 @@ def extract_parts(article, violation, part, path):
 
 
 def run_pipeline(part):
-	v = extract_parts(article, 'violation', part, '/data/p282832/HUDOC/train/'+article+'/violation/*.txt')
-	nv = extract_parts(article, 'non-violation', part, '/data/p282832/HUDOC/train/'+article+'/non-violation/*.txt')
+	v = extract_parts(article, 'violation', part, path+'train/'+article+'/violation/*.txt')
+	nv = extract_parts(article, 'non-violation', part, path+'train/'+article+'/non-violation/*.txt')
 	
-	test_v = extract_parts(article, 'violation', part, '/data/p282832/HUDOC/test_violations/'+article+'/*.txt')
+	test_v = extract_parts(article, 'violation', part, path+'test_violations/'+article+'/*.txt')
 	
 	#v = extract_parts(article, 'violation', part, './train/'+article+'/violation/*.txt')
 	#nv = extract_parts(article, 'non-violation', part, './train/'+article+'/non-violation/*.txt')
@@ -306,7 +306,8 @@ def run_pipeline(part):
 
 if __name__ == "__main__":
 	split = 0.8
-	article = sys.argv[1]
+	article = sys.argv[2]
+	path = sys.argv[1]
 	parts = ['facts', 'circumstances', 'relevant_law', 'procedure', 'procedure+facts']
 	accuracies = []
 	current_time = strftime("%H:%M:%S", gmtime())
